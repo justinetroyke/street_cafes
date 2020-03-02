@@ -5,7 +5,7 @@ require 'rails_helper'
       context 'visiting the cafe view path' do
         it 'should have the view according to #4 specs' do
 
-          visit cafe_dashboard_path
+          visit "/cafes"
 
           expect(page).to have_content('post_code')
           expect(page).to have_content('total_places')
