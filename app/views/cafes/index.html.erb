@@ -1,0 +1,12 @@
+<h1>post_code</h1>
+<h1>total_places</h1>
+<h1>total_chairs</h1>
+<h1>chairs_pct</h1>
+<h1>place_with_max_chairs</h1>
+
+<% @cafes.each do |cafe| %>
+<li><%= cafe.post_code %>
+<li><%= link_to 'Edit', edit_recipe_path(recipe) %></li>
+<%= link_to 'Delete', recipe_path(recipe), method: 'Delete' %></li>
+</li>
+<% end %>

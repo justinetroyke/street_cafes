@@ -14,6 +14,35 @@ require 'rails_helper'
           expect(page).to have_content('place_with_max_chairs')
         end
       end
+
+      context 'the cafe shown through postal code stats' do
+        it 'show number of places, chairs and max chair for postal codes' do
+          cafe1 = Cafe.new(name: 'All Bar One', address: '27 East Parade', post_code: 'LS1 5BN', number_of_chairs: 20)
+          cafe2 = Cafe.new(name: 'All Bar Two', address: '28 East Parade', post_code: 'LS1 5BN', number_of_chairs: 10)
+          cafe3 = Cafe.new(name: 'All Bar Three', address: '29 East Parade', post_code: 'AS1 5BN', number_of_chairs: 40)
+          cafe4 = Cafe.new(name: 'All Bar Four', address: '30 East Parade', post_code: 'AS1 5BN', number_of_chairs: 40)
+          cafe5 = Cafe.new(name: 'All Bar Five', address: '31 East Parade', post_code: 'BS1 5BN', number_of_chairs: 15)
+          cafe6 = Cafe.new(name: 'All Bar Six', address: '32 East Parade', post_code: 'BS1 5BN', number_of_chairs: 10)
+          cafe7 = Cafe.new(name: 'All Bar Seven', address: '33 East Parade', post_code: 'CS1 5BN', number_of_chairs: 15)
+
+          visit "/cafes"
+
+          expect(page).to have_content('LS1 5BN')
+          expect(page).to have_content('AS1 5BN')
+          expect(page).to have_content('BS1 5BN')
+          expect(page).to have_content('CS1 5BN')
+
+          expect(page).to have_content(2)
+          expect(page).to have_content(2)
+          expect(page).to have_content(2)
+          expect(page).to have_content(1)
+
+          expect(page).to have_content(30)
+          expect(page).to have_content(80)
+          expect(page).to have_content(25)
+          expect(page).to have_content(15)
+        end
+      end
     end
   end
   # post_code: The Post Code
